@@ -14,8 +14,16 @@ int main(){
     printf("[S]Soma | [U]Subtracao | [M] multiplicacao | [D]divisao\n");
     printf("digite a operacao: ");
     scanf("%s",&operacao);
-    // if
-
+    
+    if(operacao=='S'){
+        resultado=valor_a+valor_b;
+    }else if(operacao=='U'){
+        resultado=valor_a-valor_b;
+    }else if(operacao=='M'){
+        resultado=valor_a*valor_b;
+    }else if(operacao=='D'){
+        resultado=valor_a/valor_b;
+    }
     printf("meu resultado e %f", resultado);
     return 0;
     }
