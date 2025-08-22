@@ -14,6 +14,7 @@ int main(){
     printf("[S]Soma | [U]Subtracao | [M] multiplicacao | [D]divisao\n");
     printf("digite a operacao: ");
     scanf("%s",&operacao);
+    // if
 
     printf("meu resultado e %f", resultado);
     return 0;
