@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main(){
+
+    float valor_a,valor_b;
+    float resultado;
+    char operacao;
+    
+    printf("digite o valor a: ");
+    scanf("%f",&valor_a);
+    printf("digite o valor b: ");
+    scanf("%f",&valor_b);
+
+    printf("[S]Soma | [U]Subtracao | [M] multiplicacao | [D]divisao\n");
+    printf("digite a operacao: ");
+    scanf("%s",&operacao);
+
+    printf("meu resultado e %f", resultado);
+    return 0;
+    }
