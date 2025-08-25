@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(){
+    int a,b;
+    printf("digite um valor a: ");
+    scanf("%d",&a);
+    printf("digite um valor b: ");
+    scanf("%d",&b);
+
+    if(a>b){
+        printf("o valor a e maior que b.");
+    }else if (a==b){
+        printf("os valores a e b sao iguais.");
+    }else{
+        printf("o valor b e maior que o valor a.");
+    }
+  
+    return 0;
+}
