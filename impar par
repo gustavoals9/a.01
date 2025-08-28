@@ -3,9 +3,9 @@
 int main(){
     int a;
     printf("digite um valor a: ");
-    scanf("%d",&a);
+    scanf("%d", &a);
 
-    if(a%2!=1){
+    if(a%2==0){
         printf("o valor e par.");
     }else{
         printf("o valor e impar.");
