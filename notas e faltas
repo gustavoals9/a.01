@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main(){
+    int notas;
+    int faltas;
+    printf("Digite suas notas: ");
+    scanf("%d", &notas);
+
+    printf("digite suas faltas: ");
+    scanf("%d", &faltas);
+
+    if(notas >=20 || faltas <=4){
+    printf(" vc esta aprovado");
+    }
+    return 0;
+}
