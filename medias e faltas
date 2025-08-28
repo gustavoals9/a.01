@@ -1,0 +1,41 @@
+#include <stdio.h>
+int main(){
+    int faltas;
+    int media;
+    printf("Digite sua media: ");
+    scanf("%d", &media);
+
+    printf("digite suas faltas: ");
+    scanf("%d", &faltas);
+    
+    //SR
+    if(media == 0 || faltas > 18 ){
+        printf("credo.\n");
+    }
+    //reprovado
+    else if(faltas > 18){
+        printf("vc esta reprovado.\n");
+    }
+    //SS
+    else if(media >= 9 && media <= 10 && faltas <= 18){
+        printf("vc foi espetacular.\n");
+    }
+    //MS
+    else if(media >= 7 && media < 9 && faltas <= 18){
+        printf("vc desempenhou bem.\n");
+    }
+    //MM
+    else if(media >= 5 && media < 7 && faltas <= 18){
+        printf(" vc foi bom.\n");
+    }
+    //MI    
+    else if(media >= 3 && media < 5 && faltas <= 18){
+        printf("deu pro gasto.\n");
+    }
+    //II
+    else if(media >= 1 && media < 3 && faltas <= 18){
+        printf("busque ajuda.\n");
+    }
+
+   return 0;
+}
