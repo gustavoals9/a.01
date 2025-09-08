@@ -1,0 +1,18 @@
+int main() {
+    int numero; 
+    int multiplicador = 1; 
+    int resultado; 
+
+    printf("Entre com um numero: ");
+    scanf("%d", &numero);
+
+    printf("A tabuada de %d:\n", numero);
+
+    while(multiplicador <= 10) {
+        resultado = numero * multiplicador;
+        printf("%d x %d = %d\n", numero, multiplicador, resultado);
+        multiplicador++; 
+    }
+
+    return 0;
+}
