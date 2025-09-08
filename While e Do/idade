@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+    int idade;
+
+    do {
+        printf("\nDigite sua idade: ");
+        scanf("%d", &idade); 
+
+        if (idade < 0 || idade > 120) {
+            printf("Idade invalida. Digite novamente.\n");
+        }
+    } while (idade < 0 || idade > 120);
+
+    printf("\nIdade valida: %d\n", idade);
+    printf("Fim do programa.\n");
+
+    return 0;
+}
