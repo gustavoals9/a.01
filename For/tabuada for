@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int numero;
+    int resultado; 
+
+    printf("Entre com um numero: ");
+    scanf("%d", &numero);
+
+    printf("A tabuada de %d:\n", numero);
+
+    // O loop 'for' é usado para repetir o cálculo e a impressão 10 vezes.
+    // 'i' é a variável de controle, indo de 1 até 10.
+    for (int i = 1; i <= 10; i++) {
+        // Calcula o resultado da multiplicação e armazena na variável 'resultado'.
+        resultado = numero * i; 
+
+        // Imprime a linha da tabuada no formato "numero x i = resultado".
+        printf("%d x %d = %d\n", numero, i, resultado);
+    }
+
+    return 0;
+}
