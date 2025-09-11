@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main(){
+    int N = 18;
+    int numero;
+    printf("Digite o numero sorteado: ");
+    scanf("%d", &numero);
+
+    if(numero == N){
+        printf("\nVoce acertou o numero sorteado!\n");
+    }
+    else if(numero > N){
+        printf("\nSeu numero foi maior que o numero sorteado!\n");
+    }
+    else if(numero < N){
+        printf("\nSeu numero foi menor que o numero sorteado!\n");
+    }
+    
+return 0;
+}
