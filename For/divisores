@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main()
+{
+   int valor, divisor;
+   printf("Insira um valor para verificar os seus divisores: \n");
+   scanf("%d", &valor);
+   for (divisor = 1; divisor < valor+1; divisor++)
+   {
+       if (valor%divisor==0)
+       {
+           printf("%d\n", divisor);
+       }
+   }
+   return 0;
+}
