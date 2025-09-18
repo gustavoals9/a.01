@@ -1,0 +1,28 @@
+#include <stdio.h>
+int main(){
+    int valores[4];
+
+    printf("\nOla! O sistema vai pedir quatro valores!");
+    for(int i=0; i<4; i++){
+        printf("\nInsira um valor: ");
+        scanf("%d", &valores[i]);
+    }
+    
+    int inicio = 0;
+    int fim = 3;
+    while(inicio < fim){
+        int temp = valores[inicio];
+        valores[inicio] = valores[fim];
+        valores[fim] = temp;
+
+        inicio++;
+        fim--;
+    }
+    printf("\nOs valores armazenados sao: ");
+    for(int i=0; i<4; i++){
+        printf("%d", valores[i]);
+    }
+    printf("\nFim de programa!");
+   
+    return 0;
+}
