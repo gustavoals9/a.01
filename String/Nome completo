@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char destino[30] = "Programação em ";
+    char origem[] = "C";
+
+    strcat(destino, origem);
+
+    printf("Destino: %s\n", destino); // Saída: Destino: Programação em C
+    return 0;
+}
