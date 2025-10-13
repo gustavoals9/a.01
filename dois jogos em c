@@ -1,0 +1,209 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h> // Para a função abs()
+
+// ----------------------------------------------------
+// Função para o JOGO CARA OU COROA
+// ----------------------------------------------------
+void jogar_cara_ou_coroa() {
+    int resultado_lancamento;
+    int palpite_usuario;
+
+    printf("\n*****************************\n");
+    printf("     JOGO CARA OU COROA      \n");
+    printf("*****************************\n");
+
+    // Coleta o palpite do usuário
+    printf("\nEscolha seu palpite:\n");
+    printf("1 para CARA\n");
+    printf("2 para COROA\n");
+    printf("Sua escolha: ");
+    if (scanf("%d", &palpite_usuario) != 1) {
+        // Limpa o buffer de entrada em caso de falha de leitura
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
+        printf("\nEntrada invalida! Retornando ao menu principal.\n");
+        return;
+    }
+
+    // Verifica se o palpite é válido
+    if (palpite_usuario != 1 && palpite_usuario != 2) {
+        printf("\nPalpite invalido! Por favor, escolha 1 ou 2.\n");
+        return;
+    }
+
+    // Simula o lançamento (gera um número aleatório)
+    // rand() % 2 gera um número entre 0 e 1.
+    // Adicionamos 1 para ter 1 (Cara) ou 2 (Coroa).
+    resultado_lancamento = (rand() % 2) + 1; 
+
+    printf("\n--- Lancando a moeda... ---\n");
+
+    // Exibe o resultado do lançamento
+    if (resultado_lancamento == 1) {
+        printf("Resultado: CARA!\n");
+    } else {
+        printf("Resultado: COROA!\n");
+    }
+
+    // Compara o palpite com o resultado
+    printf("\n--- Verificacao ---\n");
+    if (palpite_usuario == resultado_lancamento) {
+        printf("Parabens! Voce ACERTOU!\n");
+    } else {
+        printf("Que pena! Voce ERROU.\n");
+    }
+}
+
+// ----------------------------------------------------
+// Função para o JOGO ADIVINHAÇÃO
+// ----------------------------------------------------
+void jogar_adivinhacao() {
+    // A função srand() já foi chamada no 'main'
+    
+    int numerogrande = rand();
+    int numeropensado = (numerogrande % 100) + 1; // Ajustado para ser entre 1 e 100
+    
+    int chute;
+    int tentativas = 1;
+    double pontos = 1000;
+    int acertou = 0;
+    int nivel;
+    int numerodetentativas;
+
+    printf("\n*****************************\n");
+    printf("      JOGO ADIVINHACAO       \n");
+    printf("*****************************\n");
+
+    printf("\nQual o nivel de dificuldade que voce quer jogar?\n");
+    printf("(1) Facil\t (2) Medio \t (3) Dificil\n\n");
+    printf("Escolha: ");
+    
+    if (scanf("%d", &nivel) != 1) {
+        // Limpa o buffer de entrada em caso de falha de leitura
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
+        printf("\nEntrada invalida! Retornando ao menu principal.\n");
+        return;
+    }
+
+
+    switch (nivel) {
+        case 1:
+        numerodetentativas = 20;
+        break;
+
+        case 2: 
+        numerodetentativas = 15;
+        break;
+
+        default: 
+        numerodetentativas = 6;
+        break;
+    }
+    
+    printf("\nVoce tera %d tentativas.\n", numerodetentativas);
+
+    for (int i = 1; i <= numerodetentativas; i++)  {
+
+        printf("Tentativa %d de %d\n", tentativas, numerodetentativas);
+        printf("Digite seu numero (entre 1 e 100): ");
+        if (scanf ("%d", &chute) != 1) {
+            // Limpa o buffer de entrada em caso de falha de leitura
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF);
+            printf("\nEntrada invalida! A tentativa foi perdida.\n");
+            tentativas++;
+            continue; // Pula para a próxima iteração
+        }
+        
+
+
+        if (chute < 0 || chute > 100) {
+            printf("Tente novamente. Por favor, digite um numero entre 1 e 100.\n");
+            continue;
+        }
+
+        acertou = (chute == numeropensado);
+        int maior = (chute > numeropensado);
+
+        if (acertou) {
+            break;
+        }
+
+        if (maior) {
+            printf("Voce errou! O numero que voce digitou e maior que o numero que estou pensando.\n");
+        } else {
+            printf("Voce errou! O numero que voce digitou e menor que o numero que estou pensando.\n");
+        }
+
+        tentativas ++;
+
+        // abs() da biblioteca math.h. É melhor usar fabs para double, mas 
+        // a sua lógica original usava abs. Usei a abs da math.h que funciona com int, 
+        // ou se quiser manter a precisão do double, use 'fabs' em (double)(chute - numeropensado).
+        double pontosperdidos = abs(chute - numeropensado) / 2.0; 
+        pontos = pontos - pontosperdidos;
+
+    }
+
+    printf("\nFim de jogo!\n");
+
+    if(acertou) {
+        printf("Você ganhou!\n");
+        printf("Você acertou em %d tentativas!\n", tentativas);
+        printf("Total de pontos: %.1f\n", pontos);
+    } else {
+        printf("Você perdeu! O numero era %d.\n", numeropensado);
+    }
+}
+
+// ----------------------------------------------------
+// Função PRINCIPAL (main) com o menu de seleção
+// ----------------------------------------------------
+int main() {
+    int escolha;
+    
+    // Inicializa o gerador de números aleatórios APENAS UMA VEZ
+    // Usa o tempo atual como semente para garantir resultados diferentes
+    // a cada execução.
+    srand(time(NULL)); 
+
+    do {
+        printf("\n=============================\n");
+        printf("        MENU DE JOGOS        \n");
+        printf("=============================\n");
+        printf("1 - Cara ou Coroa\n");
+        printf("2 - Jogo de Adivinhacao\n");
+        printf("0 - Sair\n");
+        printf("Escolha o jogo: ");
+
+        if (scanf("%d", &escolha) != 1) {
+            // Limpa o buffer de entrada em caso de falha de leitura
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF);
+            escolha = -1; // Define uma escolha inválida para continuar o loop
+            printf("\nEntrada invalida! Por favor, digite um numero.\n");
+            continue; // Volta ao início do loop
+        }
+
+
+        switch (escolha) {
+            case 1:
+                jogar_cara_ou_coroa();
+                break;
+            case 2:
+                jogar_adivinhacao();
+                break;
+            case 0:
+                printf("\nObrigado por jogar! Saindo...\n");
+                break;
+            default:
+                printf("\nOpcao invalida! Por favor, escolha 1, 2 ou 0.\n");
+                break;
+        }
+    } while (escolha != 0);
+
+    return 0;
+}
