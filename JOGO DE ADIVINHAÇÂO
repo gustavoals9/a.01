@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main(){
+
+    int numerosorteado;
+    srand(time(NULL));
+    numerosorteado = rand() % 20 + 1;
+
+    int numeromax = 20, numeromin = 1;
+
+    printf("Bem vindo ao jogo de adivinhacao!\n");
+    printf("Sortearemos um numero aleatorio de %d a %d e voce devera adivinha-lo, se nao sua familia morre!\n", numeromin, numeromax);
+
+    int dificuldade;
+
+    printf("Niveis de dificuldade disponiveis!\n");
+    printf("1 - Facil (8 tentativas)\n");
+    printf("2 - Medio (6 tentativas)\n");
+    printf("3 - Dificil (4 tentativas)\n");
+    printf("Escolha: ");
+    scanf("%d", &dificuldade);
+
+    int facil = 8; 
+    int medio = 6;
+    int dificil = 4; 
+    int limite; 
+    
+    if (dificuldade == 1){
+        limite = facil;
+    } 
+    else if (dificuldade == 2){
+        limite = medio;
+    }
+    else if (dificuldade == 3){
+        limite = dificil;
+    } 
+    else {
+        printf("Esta opcao de dificuldade nao esta disponivel! Por padrao o sistema selecionou a dificuldade Medio!\n");
+        limite = medio;
+    }
+    
+    printf("Certo! Voce tera %d tentativas para adivinhar o numero sorteado entre %d e %d\n", limite, numeromin, numeromax);
+
+    int numero;
+    int i;
+
+    for(i =1; i <= limite; i++){
+        printf("Tentativa %d de %d!\n", i, limite);
+        printf("Digite seu palpite: ");
+        scanf("%d", &numero);
+
+        if(numero == numerosorteado){
+            printf("Voce acertou o numero sorteado! Em apenas %d tentativas", i);
+            break;
+        }
+        else if(numero > numerosorteado){
+            numeromax = numero;
+            printf("O numero sorteado e menor que o seu palpite! Ele esta entre %d e %d\n", numeromin, numeromax);
+        }
+        else{
+            numeromin = numero;
+            printf("O numero sorteado e maior que o seu palpite! Ele esta entre %d e %d\n", numeromin, numeromax);
+        }
+        if (i == limite){
+            printf("Acabaram seus palpites, sua familia pagara pelo seus erros...\n");
+            printf("O numero sorteado foi %d", numerosorteado);
+    
+        }
+    }
+
+
+    return 0;
+}
