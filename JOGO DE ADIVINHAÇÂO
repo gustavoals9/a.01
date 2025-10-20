@@ -11,7 +11,7 @@ int main(){
     int numeromax = 20, numeromin = 1;
 
     printf("Bem vindo ao jogo de adivinhacao!\n");
-    printf("Sortearemos um numero aleatorio de %d a %d e voce devera adivinha-lo, se nao sua familia morre!\n", numeromin, numeromax);
+    printf("Sortearemos um numero aleatorio de %d a %d e voce devera adivinha-lo!\n", numeromin, numeromax);
 
     int dificuldade;
 
@@ -64,7 +64,7 @@ int main(){
             printf("O numero sorteado e maior que o seu palpite! Ele esta entre %d e %d\n", numeromin, numeromax);
         }
         if (i == limite){
-            printf("Acabaram seus palpites, sua familia pagara pelo seus erros...\n");
+            printf("Acabaram seus palpites\n");
             printf("O numero sorteado foi %d", numerosorteado);
     
         }
